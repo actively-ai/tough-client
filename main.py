@@ -10,6 +10,7 @@ DEFAULT_SERVER_URL = "https://shiftsayan--tough-server-fastapi-app.modal.run/com
 @app.post("/completion")
 async def completion_endpoint(request: Request):
     data = await request.json()
+    prompt = data.get("prompt")
 
     async with httpx.AsyncClient() as client:
         try:
