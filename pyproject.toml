@@ -9,6 +9,7 @@ dependencies = [
     "fastapi>=0.115.12",
     "httpx>=0.28.1",
     "tenacity>=9.0.0",
+    "uvicorn==0.34.0",
 ]
 
 [tool.poetry]
@@ -24,6 +25,7 @@ click = ">=8.1.8"
 fastapi = ">=0.115.12"
 httpx = ">=0.28.1"
 tenacity = ">=9.0.0"
+uvicorn= "0.34.0"
 
 [build-system]
 requires = ["poetry-core"]
