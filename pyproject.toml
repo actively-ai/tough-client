@@ -1,0 +1,12 @@
+[project]
+name = "tough-client"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "click>=8.1.8",
+    "fastapi>=0.115.12",
+    "httpx>=0.28.1",
+    "tenacity>=9.0.0",
+]
