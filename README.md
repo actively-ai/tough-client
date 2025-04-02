@@ -16,6 +16,10 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
+If you have trouble activating the virtual environment on Windows, try `venv\Scripts\activate`.
+
+If you have trouble installing on windows, try running `pip install "fastapi[standard]"`.
+
 ### Usage
 
 ```bash
