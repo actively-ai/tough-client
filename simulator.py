@@ -286,20 +286,17 @@ class Simulator:
 
 
 @click.command()
-@click.argument("user_id", type=str, default=DEFAULT_USER_ID)
+@click.argument("user_id", type=str, required=True)
 @click.argument("url", type=str, default=DEFAULT_SERVER_URL)
 @click.argument("duration", type=int, default=DEFAULT_DURATION)
 def main(user_id: str, url: str, duration: int):
-    """
-    Click-based command-line entry point.
-    """
     simulator = Simulator(user_id=user_id, url=url, duration=duration)
 
     print(f"Starting simulation for {duration} seconds...")
     print(f"User ID: {user_id}")
     print(f"Server URL: {url}")
 
-    time.sleep(1)  # Give user a moment to read info
+    time.sleep(1)
 
     try:
         asyncio.run(simulator.start())

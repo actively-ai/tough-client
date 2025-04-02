@@ -43,7 +43,7 @@ poetry install --no-root
 poetry run uvicorn main:app --reload
 
 # Run the simulator
-poetry run python3 simulator.py
+poetry run python3 simulator.py --user_id <your_name>
 ```
 
 ## uv
