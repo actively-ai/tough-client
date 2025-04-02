@@ -25,7 +25,7 @@ python -m uvicorn main:app --reload
 
 # Run the simulator
 source venv/bin/activate
-python3 simulator.py
+python3 simulator.py --user_id <your_name>
 ```
 
 ## Poetry
@@ -55,5 +55,5 @@ poetry run python3 simulator.py --user_id <your_name>
 uv run python -m uvicorn main:app --reload
 
 # Run the simulator
-uv run python3 simulator.py
+uv run python3 simulator.py --user_id <your_name>
 ```
