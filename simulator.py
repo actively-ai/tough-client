@@ -263,10 +263,16 @@ class Simulator:
         loop = asyncio.get_event_loop()
 
         # Graceful shutdown on SIGINT / SIGTERM
-        for sig in (signal.SIGINT, signal.SIGTERM):
-            loop.add_signal_handler(
-                sig, lambda: print("\nSimulation interrupted.") or loop.stop()
-            )
+        # Handle signals differently on Windows vs Unix systems
+        if os.name == 'nt':  # Windows
+            # Windows doesn't support SIGTERM the same way
+            # and add_signal_handler doesn't work properly
+            pass
+        else:  # Unix/Linux/Mac
+            for sig in (signal.SIGINT, signal.SIGTERM):
+                loop.add_signal_handler(
+                    sig, lambda: print("\nSimulation interrupted.") or loop.stop()
+                )
 
         end_time = time.time() + self.duration
 
