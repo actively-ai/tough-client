@@ -6,7 +6,7 @@ app = FastAPI()
 
 DEFAULT_SERVER_URL = "https://shiftsayan--tough-server-fastapi-app.modal.run/completion"
 
-LIMIT = 100  # requests
+LIMIT = 100  # characters
 INTERVAL = 10  # seconds
 
 
