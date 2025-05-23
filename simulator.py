@@ -107,7 +107,7 @@ class Client:
         total = self.n_success + self.n_failure
         return (self.n_success / total * 100) if total > 0 else 0
 
-    def get_stats_output(self) -> list[str]:
+    def get_stats_output(self) -> list:
         """
         Returns formatted statistics lines for display.
         """
@@ -218,7 +218,7 @@ class Display:
 
     @staticmethod
     def display_results(
-        clients: list[Client], duration: int, user_id: str, server_url: str
+        clients: list, duration: int, user_id: str, server_url: str
     ):
         """
         Print final results after the simulation completes.
