@@ -6,19 +6,23 @@ app = FastAPI()
 
 DEFAULT_SERVER_URL = "https://shiftsayan--tough-server-fastapi-app.modal.run/completion"
 
-LIMIT = 100  # requests
+LIMIT = 100  # characters
 INTERVAL = 10  # seconds
 
 
 @app.post("/completion")
-async def completion_endpoint(request: Request):
+async def get_completion(request: Request):
     request_json = await request.json()
+
     prompt = request_json.get("prompt")  # noqa
 
+    return await get_openai_completion(request_json)
+
+
+async def get_openai_completion(request_json: dict):
     async with httpx.AsyncClient() as client:
         try:
             resp = await client.post(DEFAULT_SERVER_URL, json=request_json)
-
             return Response(
                 content=resp.content,
                 status_code=resp.status_code,
