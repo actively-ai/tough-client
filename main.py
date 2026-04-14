@@ -4,7 +4,7 @@ from fastapi import FastAPI, Request, Response, status
 app = FastAPI()
 
 
-DEFAULT_SERVER_URL = "https://shiftsayan--tough-server-fastapi-app.modal.run/completion"
+DEFAULT_SERVER_URL = "https://actively-ai--tough-server-fastapi-app.modal.run/completion"
 
 LIMIT = 100  # characters
 INTERVAL = 10  # seconds
