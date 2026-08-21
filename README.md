@@ -2,6 +2,8 @@
 
 ## virtualenv
 
+Python 3.9 or later is required.
+
 ### Installation
 
 ```bash
