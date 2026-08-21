@@ -2,6 +2,8 @@
 
 ## virtualenv
 
+Python 3.9+ is required. Homebrew's `python3` is often 3.14, which is supported.
+
 ### Installation
 
 ```bash
@@ -19,6 +21,8 @@ pip install -r requirements.txt
 If you have trouble activating the virtual environment on Windows, try `venv\Scripts\activate`.
 
 If you have trouble installing on windows, try running `pip install "fastapi[standard]"`.
+
+If `pip install` tries to compile `pydantic-core` from source and fails, see [docs/python-setup.md](docs/python-setup.md).
 
 ### Usage
 
