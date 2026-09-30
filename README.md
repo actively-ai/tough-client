@@ -1,65 +1,53 @@
 # Tough Client
 
-## virtualenv
+A local FastAPI app that forwards completion requests to the upstream server, plus a simulator that sends traffic to it.
 
-Python 3.9 or later is required.
+You only need Python. `uv` is optional.
 
-### Installation
+## Setup
+
+Requires Python 3.9 or newer. Python 3.12 matches `.python-version`.
 
 ```bash
-# Create a virtual environment
-python3 -m venv venv
-
-# Activate the virtual environment
-source venv/bin/activate
-
-# Upgrade pip and install the requirements
-pip install --upgrade pip
-pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 
-If you have trouble activating the virtual environment on Windows, try `venv\Scripts\activate`.
+On Windows, activate with `.venv\Scripts\activate`. If the FastAPI install fails there, run `python -m pip install "fastapi[standard]"`.
 
-If you have trouble installing on windows, try running `pip install "fastapi[standard]"`.
+### Optional: uv
 
-### Usage
+If you already have [`uv`](https://docs.astral.sh/uv/), this creates `.venv` and installs the locked dependencies:
 
 ```bash
-# Run the server
-source venv/bin/activate
+uv sync
+```
+
+Skip activation below and prefix each command with `uv run`.
+
+## Run
+
+Use two terminals. Activate the environment in each one (`source .venv/bin/activate`) unless you are using `uv run`.
+
+Start the server:
+
+```bash
 python -m uvicorn main:app --reload
-
-# Run the simulator
-source venv/bin/activate
-python3 simulator.py <your_name>
 ```
 
-## Poetry
-
-### Installation
+In the other terminal, start the simulator. Replace `your_name` with your name:
 
 ```bash
-poetry install --no-root
+python simulator.py your_name
 ```
 
-### Usage
+The simulator runs for 60 seconds against `http://localhost:8000/completion`. Stop either process with Ctrl+C.
+
+With uv:
 
 ```bash
-# Run the server
-poetry run uvicorn main:app --reload
-
-# Run the simulator
-poetry run python3 simulator.py <your_name>
-```
-
-## uv
-
-### Usage
-
-```bash
-# Run the server
 uv run python -m uvicorn main:app --reload
-
-# Run the simulator
-uv run python3 simulator.py <your_name>
+uv run python simulator.py your_name
 ```
