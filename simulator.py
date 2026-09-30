@@ -14,8 +14,6 @@ DEFAULT_SERVER_URL = "http://localhost:8000/completion"
 DEFAULT_USER_ID = "default"
 DEFAULT_DURATION = 60
 
-MAX_LOGS = 10
-
 # ANSI colors for terminal output
 GREEN = "\033[92m"
 YELLOW = "\033[93m"
@@ -55,7 +53,6 @@ class Client:
 
         # Logs: key is timestamp string, value is colorized message
         self.logs: dict[str, str] = {}
-        self.max_logs = 10
 
     async def run(self, end_time: float) -> None:
         while time.time() < end_time:
@@ -191,9 +188,8 @@ class Display:
         print(f"{header1_wrapped} {separator} {header2_wrapped}")
         print("-" * term_width)
 
-        # Take only the most recent MAX_LOGS logs
-        client1_logs = list(client1.logs.items())[-MAX_LOGS:]
-        client2_logs = list(client2.logs.items())[-MAX_LOGS:]
+        client1_logs = list(client1.logs.items())
+        client2_logs = list(client2.logs.items())
 
         # Pair them up so we can display in two columns
         logs = itertools.zip_longest(client1_logs, client2_logs, fillvalue=None)
